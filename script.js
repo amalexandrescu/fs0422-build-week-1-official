@@ -1,10 +1,8 @@
-
 function goFurther() {
   if (checkboxanswer.checked == true)
     Document.getElementById("proceedbtn").disabled = true;
   else Document.getElementById("proceedbtn").disabled = false;
 }
-
 
 console.log("test");
 const rating = function (grade) {
@@ -47,3 +45,41 @@ const clearTextArea = function () {
   let text = (document.getElementById("text-area").value = "");
 };
 
+let rateUsButton = document.getElementById("rate-us-button");
+
+const rateUs = function () {
+  rateUsButton = document.getElementById("rate-us-button");
+  location.href = "./review.html";
+};
+
+rateUsButton.addEventListener("click", rateUs);
+
+let circularProgressNode = document.querySelector(".circular-progress");
+
+let progressStartValue = 0;
+let progressEndValue = 33.3;
+let speed = 20;
+
+let progress = setInterval(() => {
+  progressStartValue += 1;
+  circularProgressNode.style.background = `conic-gradient(#d20094 ${
+    progressStartValue * 3.6
+  }deg, #00feff 0deg)`;
+
+  if (
+    progressStartValue - progressEndValue >= 0 &&
+    progressStartValue - progressEndValue < 1
+  ) {
+    while (progressStartValue < progressEndValue) {
+      circularProgressNode.style.background = `conic-gradient(#d20094 ${
+        (progressStartValue - progressEndValue) * 3.6
+      }deg, #00feff 0deg)`;
+    }
+
+    clearInterval(progress);
+  }
+
+  // if (progressStartValue === progressEndValue) {
+  //   clearInterval(progress);
+  // }
+}, speed);
