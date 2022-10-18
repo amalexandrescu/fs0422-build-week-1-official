@@ -266,9 +266,90 @@ h3{
   text-align: center;
   font-size: 20px;
 }
-.timeprogess{
-  padding: 0;
-  margin: 1.2rem;
-  font-weight: bold;
-  font-size: 0.6rem;
+
+.main-container {
+  margin: auto;
+  max-width: 1024px;
+}
+
+.div-centralized {
+  display: flex;
+  justify-content: center;
+}
+.background {
+  position: absolute;
+}
+
+.info {
+  position: absolute;
+  color: #e7e7eb;
+}
+.logo {
+  max-height: 35px;
+  margin-top: 35px;
+}
+.review {
+  text-align: center;
+  padding: 50px;
+}
+
+h1 {
+  font-size: 45px;
+  font-weight: bolder;
+  margin: 10px 0 0 0;
+}
+h3 {
+  font-size: 25px;
+  font-weight: normal;
+  margin: 20px;
+}
+
+.input-text {
+  margin-top: 10px;
+  width: 700px;
+  border: none;
+  border-bottom: #a2127f 3px solid;
+  background-color: transparent;
+  color: #4b4e62;
+  padding: 10px 10px 10px 40px;
+  font-size: 17px;
+}
+span {
+  margin: 10px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+.single-star {
+  filter: none;
+}
+
+.single-star2 {
+  filter: none;
+  cursor: pointer;
+}
+.single-star:hover {
+  filter: brightness(0) saturate(100%) invert(22%) sepia(77%) saturate(2721%)
+    hue-rotate(311deg) brightness(85%) contrast(94%);
+}
+
+.no-selected {
+  filter: brightness(0) saturate(100%) invert(8%) sepia(26%) saturate(4148%)
+    hue-rotate(214deg) brightness(98%) contrast(104%);
+}
+.stars {
+  margin-top: 32px;
+  margin-bottom: 60px;
+}
+.btn {
+  margin: 50px;
+  height: 55px;
+  width: 210px;
+  background-color: #00ffff;
+  border: none;
+  font-size: 20px;
+  font-weight: bolder;
+  color: #0a264d;
+  -webkit-box-shadow: 0px 0px 32px 8px rgba(0, 255, 255, 0.61);
+  box-shadow: 0px 0px 32px 8px rgba(0, 255, 255, 0.61);
+  cursor: pointer;
 }
