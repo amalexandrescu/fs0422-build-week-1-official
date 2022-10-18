@@ -4,9 +4,66 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./style.css" />
-    <script src="./script.js" defer></script>
-    <title>Document</title>
+    <title>Result page</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
-  <body></body>
+  <body>
+    <!-- <img src="./assets/bg.jpg" alt="background page" /> -->
+    <div id="results-container">
+      <div id="nav-bar">
+        <img src="./assets/epicode_logo.png" alt="epicode nav bar logo" />
+      </div>
+      <div id="main-container">
+        <div class="left-column">
+          <div class="align-center-vertically">
+            <div class="correct-wrong">Correct</div>
+            <div class="percentages">66.7%</div>
+            <div class="questions">4/6 questions</div>
+          </div>
+        </div>
+        <div class="flex-columns-div middle-column">
+          <div id="results">Results</div>
+          <div id="summary">The summary of your answers:</div>
+          <div id="circle">
+            <div class="circular-progress">
+              <div class="progress-value">
+                <div id="congrats" class="upper-text-circle">
+                  Congratulations!
+                </div>
+                <div id="passed" class="upper-text-circle">
+                  You passed the exam.
+                </div>
+                <div
+                  id="certificate"
+                  class="text-inside-circle lower-text-circle"
+                >
+                  We'll send you the certificate in few minutes.
+                </div>
+              </div>
+            </div>
+
+            <!-- <div id="congrats" class="upper-text-circle">Congratulations!</div>
+            <div id="passed" class="upper-text-circle">
+              You passed the exam.
+            </div>
+
+            <div id="certificate" class="text-inside-circle lower-text-circle">
+              We'll send you the certificate in few minutes.
+            </div>
+            <div class="text-inside-circle lower-text-circle">
+              Check your email (including promotions / spam folder)
+            </div> -->
+          </div>
+          <div><button>RATE US</button></div>
+        </div>
+        <div class="right-column">
+          <div class="align-center-vertically">
+            <div class="correct-wrong align-text-right">Wrong</div>
+            <div class="percentages align-text-right">33.3%</div>
+            <div class="questions align-text-right">2/6 questions</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
