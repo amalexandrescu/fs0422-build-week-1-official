@@ -1,10 +1,8 @@
-
 function goFurther() {
   if (checkboxanswer.checked == true)
     Document.getElementById("proceedbtn").disabled = true;
   else Document.getElementById("proceedbtn").disabled = false;
 }
-
 
 console.log("test");
 const rating = function (grade) {
@@ -46,4 +44,3 @@ window.onload = function () {
 const clearTextArea = function () {
   let text = (document.getElementById("text-area").value = "");
 };
-
