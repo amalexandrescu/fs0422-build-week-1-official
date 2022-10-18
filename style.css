@@ -66,6 +66,23 @@
   bottom: 0.4vh;
 }
 
+#proceedbtn {
+  margin: 50px;
+  height: 55px;
+  width: 210px;
+  background-color: #00ffff;
+  border: none;
+  font-size: 20px;
+  font-weight: bolder;
+  color: #0a264d;
+  -webkit-box-shadow: 0px 0px 32px 8px rgba(0, 255, 255, 0.61);
+  box-shadow: 0px 0px 32px 8px rgba(0, 255, 255, 0.61);
+  position: relative;
+  bottom: 10.5vh;
+  left: 82vh;
+  cursor: pointer;
+}
+
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap");
 
 html {
