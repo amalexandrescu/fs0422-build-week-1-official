@@ -1,4 +1,67 @@
 
+#welcomelogo {
+  display: inline;
+  height: 2em;
+  width: 8em;
+  margin-left: 5em;
+  margin-top: 3em;
+}
+
+#heading1 {
+  color: white;
+  font-family: "Inter", sans-serif;
+  font-size: 9vh;
+  margin-left: 10vh;
+  font-weight: 100;
+  line-height: 8vh;
+}
+
+#heading2 {
+  color: #c2128d;
+  font-family: "Inter", sans-serif;
+  margin-left: 9.5vh;
+  font-weight: bolder;
+  font-size: xx-large;
+  padding-bottom: 0;
+  margin-bottom: -1vh;
+}
+
+#para1 {
+  color: white;
+  font-family: "Inter", sans-serif;
+  margin-left: 5em;
+  font-weight: 100;
+}
+
+#list {
+  color: white;
+  font-family: "Inter", sans-serif;
+  margin-left: 8vh;
+  font-weight: 100;
+  line-height: 1.5em;
+}
+
+#checkboxanswer {
+  margin-left: 6em;
+  height: 18px;
+  width: 18px;
+  background: none;
+  cursor: pointer;
+  border: 1px, white;
+  fill-opacity: initial;
+}
+
+#promise {
+  color: white;
+  display: inline;
+  padding: 0;
+  font-weight: 600;
+  font-size: 1.7vh;
+  position: relative;
+  left: -8vh;
+  bottom: 0.4vh;
+}
+
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap");
 
 html {

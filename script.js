@@ -1,3 +1,11 @@
+
+function goFurther() {
+  if (checkboxanswer.checked == true)
+    Document.getElementById("proceedbtn").disabled = true;
+  else Document.getElementById("proceedbtn").disabled = false;
+}
+
+
 console.log("test");
 const rating = function (grade) {
   let starsMaindiv = document.getElementById("stars-div");
@@ -38,3 +46,4 @@ window.onload = function () {
 const clearTextArea = function () {
   let text = (document.getElementById("text-area").value = "");
 };
+
