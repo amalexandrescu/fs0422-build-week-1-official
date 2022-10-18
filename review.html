@@ -8,5 +8,35 @@
     <script src="./script.js" defer></script>
     <title>Document</title>
   </head>
-  <body></body>
+  <body>
+    <div class="main-container">
+      <div class="div-centralized">
+        <div class="background"><img src="/assets/bg.jpg" alt="" /></div>
+
+        <div class="info">
+          <img class="logo" src="/assets/epicode_logo.png" alt="" />
+
+          <div class="review">
+            <h1>Tell us how it's going</h1>
+            <h3>
+              From 0 to 10. how likely are you to recommend EPICODE <br />
+              to a friend or a colleague?
+            </h3>
+            <div id="stars-div"></div>
+            <h3>Leave us an open feedback about your experience so far</h3>
+            <div>
+              <input
+                class="input-text"
+                id="text-area"
+                type="text"
+                value="Write your comment here"
+                onclick="clearTextArea()"
+              />
+            </div>
+            <div><input class="btn" type="button" value="MORE INFO" /></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
