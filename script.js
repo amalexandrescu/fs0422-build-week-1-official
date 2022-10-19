@@ -45,6 +45,7 @@ const clearTextArea = function () {
   let text = (document.getElementById("text-area").value = "");
 };
 
+
 let rateUsButton = document.getElementById("rate-us-button");
 
 const rateUs = function () {
@@ -83,3 +84,4 @@ let progress = setInterval(() => {
   //   clearInterval(progress);
   // }
 }, speed);
+

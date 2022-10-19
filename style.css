@@ -8,16 +8,14 @@
 
 #heading1 {
   color: white;
-  font-family: "Inter", sans-serif;
   font-size: 9vh;
   margin-left: 10vh;
-  font-weight: 100;
+  font-weight: normal;
   line-height: 8vh;
 }
 
 #heading2 {
   color: #c2128d;
-  font-family: "Inter", sans-serif;
   margin-left: 9.5vh;
   font-weight: bolder;
   font-size: xx-large;
@@ -28,12 +26,13 @@
 #welcomespan {
   color: white;
   font-weight: bold;
+  margin: 0%;
+  cursor: default;
 }
 
 #para1 {
   color: white;
-  font-family: "Inter", sans-serif;
-  margin-left: 5em;
+  margin-left: 9.5vh;
   font-weight: 100;
 }
 
@@ -42,17 +41,14 @@
   font-family: "Inter", sans-serif;
   margin-left: 8vh;
   font-weight: 100;
-  line-height: 1.5em;
+  line-height: 3vh;
 }
 
 #checkboxanswer {
-  margin-left: 6em;
+  margin-left: 10vh;
   height: 18px;
   width: 18px;
-  background: none;
   cursor: pointer;
-  border: 1px, white;
-  fill-opacity: initial;
 }
 
 #promise {
@@ -60,10 +56,27 @@
   display: inline;
   padding: 0;
   font-weight: 600;
-  font-size: 1.7vh;
+  font-size: 1.9vh;
   position: relative;
-  left: -8vh;
+  left: 0vh;
   bottom: 0.4vh;
+}
+
+#proceedbtn {
+  margin: 50px;
+  height: 55px;
+  width: 210px;
+  background-color: #00ffff;
+  border: none;
+  font-size: 20px;
+  font-weight: bolder;
+  color: #0a264d;
+  -webkit-box-shadow: 0px 0px 32px 8px rgba(0, 255, 255, 0.61);
+  box-shadow: 0px 0px 32px 8px rgba(0, 255, 255, 0.61);
+  position: relative;
+  bottom: 10.5vh;
+  left: 82vh;
+  cursor: pointer;
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap");

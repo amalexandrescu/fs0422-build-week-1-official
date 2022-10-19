@@ -9,7 +9,7 @@
     <title>Document</title>
   </head>
   <body>
-<div> <Img id="welcomelogo" src="/assets/epicode_logo.png"> </Img><br>
+<div> <Img class="logo" src="/assets/epicode_logo.png"> </Img><br>
 </div>
 <br>
 
@@ -23,7 +23,7 @@
 </P>
 <div> <br></div>
 <ul id="list">
-    <li> Each question is <span id="welcomespan">timed </span>and can be only <span id="welcomespan">answered once.</span> </li>
+    <li> Each question is <span id="welcomespan"> timed </span>and can be only <span id="welcomespan">answered once.</span> </li>
     <li>Changing browser tab or opening other windows will <span id="welcomespan">invalidate the question.</span></li>
     <li> This exam will take approx. <span id="welcomespan" >0 - 5 minutes.</span> </li>
 </ul>
@@ -33,7 +33,8 @@
 <form>
   <input type="checkbox" name="chkbx" id="checkboxanswer" onchange="isChecked(this, 'sub1')"; >
  <p id="promise">I promise to answer myself without help from anyone </p>  </form>
- <div><input id="proceedbtn" type="button" button onclick="window.open('https://www.google.com/maps')" value="PROCEED" ></div>
+ 
+ <div><input id="proceedbtn" type="button" button onclick="window.open('/questions.html')" value="PROCEED" ></div>
 
 
 <script type="text/javascript" src="java.js"> 
