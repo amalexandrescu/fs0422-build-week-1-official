@@ -162,7 +162,7 @@ img {
   font-size: 20px;
 }
 
-button {
+#rate-us-button {
   color: white;
   border-color: white;
   background-color: transparent;
@@ -176,22 +176,6 @@ button {
   box-shadow: 0 0 40px #e7e7eb40;
 }
 
-#circle {
-  /* display: flex; */
-  /* flex-direction: column; */
-  /* width: 170px;
-  height: 170px; */
-  /* border: 50px solid white; */
-  /* border-radius: 50%; */
-  /* padding: 35px 35px;
-  margin-block: 45px;
-  align-items: center; */
-
-  /* border-color: #d20094; */
-
-  /* animation: 0.4s ease-out turn_in reverse; */
-}
-
 .upper-text-circle {
   font-weight: 700;
   font-size: 17px;
@@ -202,22 +186,21 @@ button {
   font-weight: 400;
   font-size: 13px;
   text-align: center;
-  /* color: black; */
+  color: #e7e7eb;
+  padding-inline: 15px;
 }
 
 #congrats {
-  /* color: white; */
-  /* color: black; */
-  margin-top: 10px;
+  padding-top: 30px;
 }
 
 #passed {
   color: #00ffff;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 #certificate {
-  padding-top: 10px;
+  padding-top: 30px;
 }
 
 .align-center-vertically {
@@ -230,41 +213,42 @@ button {
 }
 
 .circular-progress {
-  width: 315px;
-  height: 315px;
+  width: 330px;
+  height: 330px;
   border-radius: 50%;
-  background: conic-gradient(goldenrod 94deg, green 0deg);
+  background: conic-gradient(goldenrod 3.6deg, #d20094 0deg);
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-block: 80px;
+  /* box-shadow: 10px -10px rgba(0, 0, 0, 0.6); */
 }
 
 .circular-progress::before {
-  width: 230px;
-  height: 230px;
+  width: 250px;
+  height: 250px;
   content: "";
   position: absolute;
-  background-color: grey;
+  /* background-color: grey; */
+  background-image: linear-gradient(to bottom right, #0a113b, #2b135b, #321356);
+
+  background-repeat: no-repeat;
+  background-size: cover;
+
   border-radius: 50%;
 }
 
-.circle-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: grey;
-  width: 420px;
-  padding: 50px 0;
-  border-radius: 8px;
-}
-
 .progress-value {
-  position: relative;
+  /* position: relative; */
+  z-index: 1;
   font-size: 10px;
   font-weight: 600;
   color: purple;
+
+  padding-top: 25px;
+  width: 230px;
+  height: 230px;
 }
 .container {
   width: 100%;
@@ -425,4 +409,10 @@ span {
   -webkit-box-shadow: 0px 0px 32px 8px rgba(0, 255, 255, 0.61);
   box-shadow: 0px 0px 32px 8px rgba(0, 255, 255, 0.61);
   cursor: pointer;
+}
+
+#try {
+  background-image: url("./assets/bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
