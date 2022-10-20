@@ -6,19 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./style.css" />
     <script src="./script.js" defer></script>
+    <script src="./timer.js" defer></script>
     <title>QuestionPage</title>
   </head>
   <body>
     <div class="container">
       <div class="navbar">
-        <div class="navbaricon"><img src="./assets/epicode_logo.png" /></div>
+        <div id="nav-bar">
+          <img
+            id="logo-image"
+            src="./assets/epicode_logo.png"
+            alt="epicode nav bar logo"
+          />
+        </div>
         <div class="timer-progress">
-          <div class="progress-value">
-            <h5 id="timerseconds" class="upper-text-circle">SECONDS</h5>
-            <h6 id="timernumber" class="upper-text-circle">
-              16<br />
-              Remaining
-            </h6>
+          <div class="progress-value progress-value-timer">
+            <div id="timerseconds">SECONDS</div>
+            <div id="timernumber"></div>
+            <div>REMAINING</div>
           </div>
         </div>
       </div>
