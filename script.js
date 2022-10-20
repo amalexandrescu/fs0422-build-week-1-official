@@ -3,6 +3,7 @@ let questions = [
     question: "In HTML, onclick and onfocus are:",
     correct: "Event attributes",
     incorrects: ["None of the mentioned", "HTML elements", "Style attributes"],
+    difficulty: "easy",
   },
   {
     question:
@@ -13,6 +14,7 @@ let questions = [
       "const key = 'name'; person[key]='John';",
       "person.push({name:'John'});",
     ],
+    difficulty: "easy",
   },
   {
     question: "How do you write 'Hello World' in an alert box?",
@@ -22,12 +24,14 @@ let questions = [
       "msg('Hello World');",
       "alertBox('Hello World');",
     ],
+    difficulty: "medium",
   },
   {
     question:
       "What is the result of document.querySelectorAll('.test') when there aren't elements with class test in the DOM?",
     correct: "[]",
     incorrects: ["null", "error", "undefined"],
+    difficulty: "hard",
   },
   {
     question: "How can we create a new DOM element in JavaScript?",
@@ -37,20 +41,14 @@ let questions = [
       "Using the insertBefore method",
       "Using the querySelector method",
     ],
+    difficulty: "hard",
   },
 ];
 
-let obj = {
-  question: "How can we create a new DOM element in JavaScript?",
-  correct: "Using the createElement method",
-  incorrects: [
-    "Using the createDocument method",
-    "Using the insertBefore method",
-    "Using the querySelector method",
-  ],
-};
-
 let score = 0;
+let currentQuestion = 0;
+let totalQuestions = questions.length;
+const actualQuestion = document.querySelector("#total_question");
 
 const randomiseNumbersUnique = function (num) {
   const allNumbers = [];
@@ -69,18 +67,17 @@ const randomiseNumbersUnique = function (num) {
   return result;
 };
 
-// console.log(randomiseNumbersUnique(4));
-
 const createQuestions = function (obj) {
+  if (!obj) {
+    goToResultsPage();
+  }
   const parentNode = document.getElementsByClassName("bodycontent")[0];
   const correctAnswer = obj.correct;
   let arrOfQuestions = [];
   let incorrectArray = [];
   incorrectArray = obj.incorrects;
-  // console.log(incorrectArray);
   arrOfQuestions = incorrectArray.slice();
   arrOfQuestions.push(correctAnswer);
-  // console.log("array of questions:", arrOfQuestions);
 
   const randomIndexesArray = randomiseNumbersUnique(arrOfQuestions.length);
 
@@ -103,87 +100,64 @@ const createQuestions = function (obj) {
     option.classList.add("answerbutton");
     input.setAttribute("value", `${option.innerText}`);
     label.appendChild(option);
-    // parentNode.appendChild(option);
   }
+
+  // let TIME_LIMIT = 30;
+  // let timePassed = 0;
+  // let timeLeft = TIME_LIMIT;
+
+  // console.log("timepassed", timePassed);
+  // console.log("timeleft", timeLeft);
+
+  // const remainingTime = document.querySelector("#timernumber");
+  // remainingTime.innerText = TIME_LIMIT;
+
+  // let timerInterval = null;
+
+  // startTimer();
 };
-
-// createQuestions(obj);
-
-// const nextButton = document.querySelector(".nextbutton");
-// nextButton.addEventListener("click", () => {
-//   console.log("button works");
-// });
-
-// const checkCorrectAnswer = function (obj) {
-//   const nextButton = document.querySelector(".nextbutton");
-//   const radioButtons = document.querySelectorAll('input[name="radioname"]');
-//   let selectedAnswer = "";
-
-const nextButton = document.querySelector(".nextbutton");
-
-// const checkAnswer = function () {
-//   const radioButtons = document.querySelectorAll('input[name="radioname"]');
-//   for (const radioButton of radioButtons) {
-//     if (radioButton.checked) {
-//       if (radioButton.value === obj.correct) score++;
-//       // break;
-//     }
-//   }
-//   console.log("current score:", score);
-//   nextButton.addEventListener("click", goToNextPage);
-
-// };
-
-// checkAnswer(obj);
-
-let currentQuestion = 0;
-
-let totalQuestions = questions.length;
-
-const actualQuestion = document.querySelector("#total_question");
 
 const goToResultsPage = function () {
+  // let updatedScore = checkAnswer(questions[currentQuestion - 1]);
   const nextButton = document.querySelector(".nextbutton");
-
   location.href = "./results.html";
+  currentQuestion++;
 };
 
-// nextButton.addEventListener("click", checkAnswer);
+const checkAnswer = function (obj) {
+  const radioButtons = document.querySelectorAll('input[name="radioname"]');
+  for (const radioButton of radioButtons) {
+    if (radioButton.checked) {
+      if (radioButton.value === obj.correct) {
+        score++;
+      }
+    }
+  }
+  // console.log("current score:", score);
+  return score;
+};
 
 const goToNextPage = function () {
   const parentNode = document.getElementsByClassName("bodycontent")[0];
   parentNode.innerHTML = "";
   currentQuestion++;
   createQuestions(questions[currentQuestion]);
-  actualQuestion.innerText = `QUESTION ${currentQuestion + 1}/${
-    questions.length
-  }`;
+
+  actualQuestion.innerText = `QUESTION ${
+    currentQuestion + 1
+  }/${totalQuestions}`;
+
+  const nextButton = document.querySelector(".nextbutton");
+
+  localStorage.setItem("currentScore", score);
+
+  localStorage.setItem("current", currentQuestion);
 
   if (currentQuestion >= totalQuestions) {
     nextButton.addEventListener("click", goToResultsPage);
   }
-
   nextButton.addEventListener("click", checkAnswer);
-
-  // nextButton.addEventListener("click", goToNextPage);
-
-  // console.log("current question:", currentQuestion);
-  // if (currentQuestion == totalQuestions) {
-  //   nextButton.addEventListener("click", goToResultsPage);
-  // }
-  // nextButton.addEventListener("click", checkAnswer);
-};
-
-const checkAnswer = function () {
-  const radioButtons = document.querySelectorAll('input[name="radioname"]');
-  for (const radioButton of radioButtons) {
-    if (radioButton.checked) {
-      if (radioButton.value === obj.correct) score++;
-      // break;
-    }
-  }
-  console.log("current score:", score);
-  // nextButton.addEventListener("click", goToNextPage);
+  run();
 };
 
 const startQuiz = function () {
@@ -191,48 +165,35 @@ const startQuiz = function () {
   currentQuestion = 0;
 
   createQuestions(questions[currentQuestion]);
+  localStorage.setItem("current", currentQuestion);
+
+  // let difficulty = questions[currentQuestion].difficulty;
+  // if (difficulty === "easy") TIME_LIMIT = 30;
+  // else if (difficulty === "medium") TIME_LIMIT = 60;
+  // else if (difficulty === "hard") TIME_LIMIT = 90;
+
+  // console.log("difficulty", difficulty);
+
   actualQuestion.innerText = `QUESTION ${currentQuestion + 1}/${
     questions.length
   }`;
 
-  nextButton.addEventListener("click", checkAnswer);
+  if (currentQuestion >= totalQuestions - 1) {
+    nextButton.addEventListener("click", goToResultsPage);
+  }
 
-  // nextButton.addEventListener("click", goToNextPage);
+  const nextButton = document.querySelector(".nextbutton");
+
+  nextButton.addEventListener("click", () =>
+    checkAnswer(questions[currentQuestion])
+  );
+
+  nextButton.addEventListener("click", goToNextPage);
+  run();
 };
 
-window.onload = function () {
-  startQuiz();
-};
-
-// nextButton.addEventListener("click", goToNextPage);
-
-// startQuiz();
-console.log("question:", questions);
-console.log("first question:", questions[0]);
-
-// const StartQuiz = function () {
-//   createQuestions(questions[currentQuestion]);
-//   // currentQuestion++;
-//   nextButton.addEventListener("click", checkAnswer);
-//   nextButton.addEventListener("click", goToNextPage);
-
-//   // goToNextPage();
-// };
-
-// StartQuiz();
-
-// nextButton.addEventListener("click", () => {
-//   const radioButtons = document.querySelectorAll('input[name="radioname"]');
-//   for (const radioButton of radioButtons) {
-//     // let selectedAnswer;
-//     if (radioButton.checked) {
-//       // selectedAnswer = radioButton.value;
-//       // return selectedAnswer;
-//       return radioButton.value;
-//       break;
-//     }
-//   }
-// });
+// window.onload = function () {
+//   startQuiz();
 // };
 
 // function goFurther() {
@@ -242,57 +203,62 @@ console.log("first question:", questions[0]);
 // }
 
 //you can select the stars and make them brighter
-// const rating = function (grade) {
-//   let starsMaindiv = document.getElementById("stars-div");
-//   starsMaindiv.innerHTML = "";
-//   for (let i = 0; i <= 10; i++) {
-//     let spanStar = document.createElement("span");
-//     let image = document.createElement("img");
-//     image.setAttribute("src", "/assets/star.svg");
-//     if (i <= grade) {
-//       spanStar.classList.add("single-star2");
-//     } else {
-//       spanStar.classList.add("no-selected");
-//     }
+const rating = function (grade) {
+  let starsMaindiv = document.getElementById("stars-div");
+  starsMaindiv.innerHTML = "";
+  for (let i = 0; i <= 10; i++) {
+    let spanStar = document.createElement("span");
+    let image = document.createElement("img");
+    image.setAttribute("src", "./assets/star.svg");
+    if (i <= grade) {
+      spanStar.classList.add("single-star2");
+    } else {
+      spanStar.classList.add("no-selected");
+    }
 
-//     spanStar.addEventListener("click", () => rating(i));
-//     starsMaindiv.appendChild(spanStar);
-//     spanStar.appendChild(image);
-//   }
-// };
+    spanStar.addEventListener("click", () => rating(i));
+    starsMaindiv.appendChild(spanStar);
+    spanStar.appendChild(image);
+  }
+};
 
 //creates the stars
-// const createStars = function () {
-//   let starsMaindiv = document.getElementById("stars-div");
-//   for (let i = 0; i <= 10; i++) {
-//     let spanStar = document.createElement("span");
-//     let image = document.createElement("img");
-//     image.setAttribute("src", "/assets/star.svg");
-//     spanStar.classList.add("single-star");
-//     spanStar.addEventListener("click", () => rating(i));
-//     starsMaindiv.appendChild(spanStar);
-//     spanStar.appendChild(image);
-//   }
-// };
+const createStars = function () {
+  let starsMaindiv = document.getElementById("stars-div");
+  for (let i = 0; i <= 10; i++) {
+    let spanStar = document.createElement("span");
+    let image = document.createElement("img");
+    image.setAttribute("src", "./assets/star.svg");
+    image.classList.add("star-image");
+    spanStar.classList.add("single-star");
+    spanStar.addEventListener("click", () => rating(i));
+    starsMaindiv.appendChild(spanStar);
+    spanStar.appendChild(image);
+  }
+};
 
-// window.onload = function () {
-//   // createStars();
-// };
+window.onload = function () {
+  startQuiz();
 
-// const clearTextArea = function () {
-//   let text = (document.getElementById("text-area").value = "");
-// };
+  createStars();
+};
 
-// let rateUsButton = document.getElementById("rate-us-button");
+const clearTextArea = function () {
+  let text = (document.getElementById("text-area").value = "");
+};
 
-// const rateUs = function () {
-//   rateUsButton = document.getElementById("rate-us-button");
-//   location.href = "./review.html";
-// };
+let rateUsButton = document.getElementById("rate-us-button");
 
-// rateUsButton.addEventListener("click", rateUs);
+const rateUs = function () {
+  rateUsButton = document.getElementById("rate-us-button");
+  location.href = "./review.html";
+};
+
+rateUsButton.addEventListener("click", rateUs);
 
 // let circularProgressNode = document.querySelector(".circular-progress");
+
+// const percentages = document.querySelector(".percentages");
 
 // let progressStartValue = 0;
 // let progressEndValue = 33.3;
@@ -321,3 +287,38 @@ console.log("first question:", questions[0]);
 //   //   clearInterval(progress);
 //   // }
 // }, speed);
+
+//for difficulty = easy : 30 sec
+//for difficulty = medium : 60 sec
+//for difficulty = easy : 90 sec
+
+// const TIME_LIMIT = 10;
+// let timePassed = 0;
+// let timeLeft = TIME_LIMIT;
+
+// const remainingTime = document.querySelector("#timernumber");
+// remainingTime.innerText = TIME_LIMIT;
+
+// let timerInterval = null;
+
+// function startTimer() {
+//   timerInterval = setInterval(() => {
+//     // The amount of time passed increments by one
+//     timePassed = timePassed += 1;
+//     timeLeft = TIME_LIMIT - timePassed;
+
+//     // The time left label is updated
+//     remainingTime.innerText = timeLeft;
+//     if (timeLeft === 0) {
+//       clearInterval(timerInterval);
+//     }
+//   }, 1000);
+// }
+
+// startTimer();
+
+//1. welcome page - call function click checkbox and proceed
+//2.
+//3.  color the timer
+//4.
+// 5.
