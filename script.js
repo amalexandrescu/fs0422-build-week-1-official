@@ -1,7 +1,12 @@
-function goFurther() {
-  if (checkboxanswer.checked == true)
-    Document.getElementById("proceedbtn").disabled = true;
-  else Document.getElementById("proceedbtn").disabled = false;
+function accepted(acceptedCheckBox) {
+  //If the checkbox has been checked
+  if (acceptedCheckBox.checked) {
+    //Set the disabled property to FALSE and enable the button.
+    document.getElementById("proceedbtn").disabled = false;
+  } else {
+    //Otherwise, disable the submit button.
+    document.getElementById("proceedbtn").disabled = true;
+  }
 }
 
 console.log("test");
@@ -45,7 +50,6 @@ const clearTextArea = function () {
   let text = (document.getElementById("text-area").value = "");
 };
 
-
 let rateUsButton = document.getElementById("rate-us-button");
 
 const rateUs = function () {
@@ -84,4 +88,3 @@ let progress = setInterval(() => {
   //   clearInterval(progress);
   // }
 }, speed);
-

@@ -9,18 +9,19 @@
 #heading1 {
   color: white;
   font-size: 9vh;
-  margin-left: 10vh;
+  margin-left: 11vh;
   font-weight: normal;
   line-height: 8vh;
 }
 
 #heading2 {
   color: #c2128d;
-  margin-left: 9.5vh;
+  margin-left: 11vh;
   font-weight: bolder;
   font-size: xx-large;
   padding-bottom: 0;
   margin-bottom: -1vh;
+  padding-top: 2vh;
 }
 
 #welcomespan {
@@ -32,23 +33,49 @@
 
 #para1 {
   color: white;
-  margin-left: 9.5vh;
+  margin-left: 11vh;
   font-weight: 100;
 }
 
 #list {
   color: white;
   font-family: "Inter", sans-serif;
-  margin-left: 8vh;
+  margin-left: 9.5vh;
   font-weight: 100;
   line-height: 3vh;
 }
 
-#checkboxanswer {
-  margin-left: 10vh;
+/* #checkboxanswer {
+  margin-left: 11vh;
   height: 18px;
   width: 18px;
   cursor: pointer;
+} */
+
+label > input[type="checkbox"] {
+  display: none;
+}
+label > input[type="checkbox"] + *::before {
+  content: "";
+  display: inline-block;
+  vertical-align: bottom;
+  width: 0.8rem;
+  height: 0.8rem;
+  margin-right: 0.8rem;
+  border-style: solid;
+  border-width: 0.2rem;
+  border-color: white;
+  flex-shrink: 0;
+  margin-left: 10vh;
+  cursor: pointer;
+}
+label > input[type="checkbox"]:checked + *::before {
+  content: "✓";
+  color: white;
+  border-color: white;
+}
+label > input[type="checkbox"]:checked + * {
+  color: white;
 }
 
 #promise {
@@ -58,8 +85,8 @@
   font-weight: 600;
   font-size: 1.9vh;
   position: relative;
-  left: 0vh;
-  bottom: 0.4vh;
+  left: 2vh;
+  bottom: 0.6vh;
 }
 
 #proceedbtn {
@@ -71,12 +98,16 @@
   font-size: 20px;
   font-weight: bolder;
   color: #0a264d;
-  -webkit-box-shadow: 0px 0px 32px 8px rgba(0, 255, 255, 0.61);
-  box-shadow: 0px 0px 32px 8px rgba(0, 255, 255, 0.61);
+
   position: relative;
   bottom: 10.5vh;
   left: 82vh;
   cursor: pointer;
+}
+
+#proceedbtn:hover {
+  -webkit-box-shadow: 0px 0px 32px 8px rgba(0, 255, 255, 0.61);
+  box-shadow: 0px 0px 32px 8px rgba(0, 255, 255, 0.61);
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap");

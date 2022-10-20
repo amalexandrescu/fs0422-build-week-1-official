@@ -30,17 +30,14 @@
 <div><br></div>
 <div><br></div>
 <div><br></div>
-<form>
-  <input type="checkbox" name="chkbx" id="checkboxanswer" onchange="isChecked(this, 'sub1')"; >
+
+<label>
+  <input type="checkbox"  onclick="accepted(this)"> 
  <p id="promise">I promise to answer myself without help from anyone </p>  </form>
- 
- <div><input id="proceedbtn" type="button" button onclick="window.open('/questions.html')" value="PROCEED" ></div>
+</label>
 
 
-<script type="text/javascript" src="java.js"> 
-
-</script>
- 
+ <div><input id="proceedbtn" type="button" disabled button onclick="window.open('/questions.html')" value="PROCEED" ></div>
 
 </body>
 </html>
