@@ -95,6 +95,16 @@ body {
   padding: 0;
 }
 
+/* #logo-image {
+  width: 15%;
+  padding-block: 35px;
+  padding-inline: 100px;
+  /* height: 100%; */
+  object-fit: contain;
+  width: 150px;
+  height: 40px;
+} */
+
 img {
   width: 15%;
   padding-block: 35px;
@@ -297,10 +307,10 @@ img {
   color: white;
   font-size: 10px;
 }
-img {
+/* img {
   width: 150px;
   height: 40px;
-}
+} */
 .navbar {
   width: 100%;
   display: flex;
@@ -397,6 +407,7 @@ span {
   margin-top: 32px;
   margin-bottom: 60px;
 }
+
 .btn {
   margin: 50px;
   height: 55px;
@@ -422,8 +433,8 @@ img {
   height: 40px;
 }
 .timer-progress {
-  width: 110px;
-  height: 110px;
+  width: 130px;
+  height: 130px;
   border-radius: 50%;
   background: conic-gradient(#876192 130deg, #00feff 0deg);
   position: relative;
@@ -432,6 +443,11 @@ img {
   align-items: center;
   margin-block: 80px;
 }
+
+#timerseconds {
+  padding-top: 7px;
+}
+
 .navbar {
   display: flex;
   align-items: center;
@@ -441,13 +457,15 @@ img {
 }
 
 .progress-value {
+  position: absolute;
+  top: 0;
   z-index: 1;
   color: white;
   text-align: center;
 }
 .timer-progress::before {
-  width: 80px;
-  height: 80px;
+  width: 100px;
+  height: 100px;
   content: "";
   position: absolute;
   background-image: linear-gradient(to bottom right, #63256a, #63256a, #63256a);
@@ -507,8 +525,8 @@ img {
 }
 
 #timernumber {
-  font-size: 10px;
-  margin-top: 10%;
+  font-size: 35px;
+  /* margin-top: 10%; */
 }
 
 .labl {
