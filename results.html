@@ -7,19 +7,24 @@
     <title>Result page</title>
     <link rel="stylesheet" href="style.css" />
     <script src="./script.js" defer></script>
+    <script src="./final-result.js" defer></script>
   </head>
   <body>
     <div id="try"></div>
     <div id="results-container">
       <div id="nav-bar">
-        <img src="./assets/epicode_logo.png" alt="epicode nav bar logo" />
+        <img
+          id="logo-image"
+          src="./assets/epicode_logo.png"
+          alt="epicode nav bar logo"
+        />
       </div>
       <div id="main-container">
         <div class="left-column">
           <div class="align-center-vertically">
             <div class="correct-wrong">Correct</div>
-            <div class="percentages">66.7%</div>
-            <div class="questions">4/6 questions</div>
+            <div id="correctPercentage" class="percentages"></div>
+            <div id="correctQuestions" class="questions"></div>
           </div>
         </div>
         <div class="flex-columns-div middle-column">
@@ -51,8 +56,14 @@
         <div class="right-column">
           <div class="align-center-vertically">
             <div class="correct-wrong align-text-right">Wrong</div>
-            <div class="percentages align-text-right">33.3%</div>
-            <div class="questions align-text-right">2/6 questions</div>
+            <div
+              id="incorrectPercentage"
+              class="percentages align-text-right"
+            ></div>
+            <div
+              id="incorrectQuestions"
+              class="questions align-text-right"
+            ></div>
           </div>
         </div>
       </div>
