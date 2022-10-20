@@ -1,31 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./questionstyle.css">
-    <script src="./questionpage.js" defer></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./script.js" defer></script>
+    <script src="./timer.js" defer></script>
     <title>QuestionPage</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <div class="navbar">
-            <div class="navbaricon"><img src="./assets/epicode_logo.png"></div>
-                <div class="timer-progress">
-                  <div class="progress-value">
-                    <h5 id="timerseconds" class="upper-text-circle">
-                      SECONDS
-                    </h5>
-                    <h6 id="timernumber" class="upper-text-circle">
-                      16<BR>
-                        Remaining
-                      </h6>
-                </div>
-                </div>
-                </div>
-                <div class="bodycontent">
-                    <div id="question">
+      <div class="navbar">
+        <div id="nav-bar">
+          <img
+            id="logo-image"
+            src="./assets/epicode_logo.png"
+            alt="epicode nav bar logo"
+          />
+        </div>
+        <div class="timer-progress">
+          <div class="progress-value progress-value-timer">
+            <div id="timerseconds">SECONDS</div>
+            <div id="timernumber"></div>
+            <div>REMAINING</div>
+          </div>
+        </div>
+      </div>
+      <div class="bodycontent">
+        <!-- <div id="question">
                     <h3 class="questiontext">
                         How do you call a function named ''foo''?
                     </h3>
@@ -33,14 +36,12 @@
                     <h4 class="answerbutton" id="answer1">apple</h4>
                     <h4 class="answerbutton" id="answer2">orange</h4>
                     <h4 class="answerbutton" id="answer3">grape</h4>
-                    <h4 class="answerbutton" id="answer4">love</h5>
-                </div>
-                <div class="questionreading">
-                  <h3 id="total_question">  QUESTION1/10</h3>
-                <button class="nextbutton">Next→
-                </button>
-                </div>
-              </div>
-
-</body>
+                    <h4 class="answerbutton" id="answer4">love</h5> -->
+      </div>
+      <div class="questionreading">
+        <h3 id="total_question">QUESTION1/10</h3>
+        <button class="nextbutton">Next→</button>
+      </div>
+    </div>
+  </body>
 </html>

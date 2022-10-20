@@ -11,11 +11,17 @@
   <body>
     <div class="main-container">
       <div class="div-centralized">
-        <div class="background"><img src="/assets/bg.jpg" alt="" /></div>
+        <div class="background"></div>
 
         <div class="info">
-          <img class="logo" src="/assets/epicode_logo.png" alt="" />
-
+          <!-- <img class="logo" src="./assets/epicode_logo.png" alt="" /> -->
+          <div id="nav-bar">
+            <img
+              id="logo-image"
+              src="./assets/epicode_logo.png"
+              alt="epicode nav bar logo"
+            />
+          </div>
           <div class="review">
             <h1>Tell us how it's going</h1>
             <h3>
@@ -33,7 +39,11 @@
                 onclick="clearTextArea()"
               />
             </div>
-            <div><input class="btn" type="button" value="MORE INFO" /></div>
+            <div>
+              <a href="https://epicode.com/" target="_blank"
+                ><input class="btn" type="button" value="MORE INFO"
+              /></a>
+            </div>
           </div>
         </div>
       </div>
