@@ -6,9 +6,9 @@ const goToQuestionsPage = function () {
 
 proceedButton.addEventListener("click", goToQuestionsPage);
 
-function accepted(acceptedCheckBox) {
+function accepted(checkBox) {
   //If the checkbox has been checked
-  if (acceptedCheckBox.checked) {
+  if (checkBox.checked) {
     //Set the disabled property to FALSE and enable the button.
     document.getElementById("proceedbtn").disabled = false;
     proceedButton.addEventListener("mouseover", () => {
@@ -22,5 +22,3 @@ function accepted(acceptedCheckBox) {
     document.getElementById("proceedbtn").disabled = true;
   }
 }
-
-accepted();
