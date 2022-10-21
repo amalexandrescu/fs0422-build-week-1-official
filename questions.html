@@ -4,9 +4,33 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./final-style.css" />
     <script src="./script.js" defer></script>
-    <title>Document</title>
+    <title>QuestionPage</title>
   </head>
-  <body></body>
+  <body>
+    <div id="nav-bar" class="questions-nav">
+      <img
+        id="logo-image"
+        src="./assets/epicode_logo.png"
+        alt="epicode nav bar logo"
+      />
+      <div class="timer-progress">
+        <div class="progress-value progress-value-timer">
+          <div id="timerseconds">SECONDS</div>
+          <div id="timernumber"></div>
+          <div id="timer-remaining">REMAINING</div>
+        </div>
+      </div>
+    </div>
+    <div class="bodycontent">
+      <!-- Here we'll cretate the questions and the answers via JS -->
+    </div>
+    <div class="questionreading">
+      <h3 id="total_question">
+        <span id="white-number"></span><span id="pink-number"></span>
+      </h3>
+      <button class="nextbutton">Next→</button>
+    </div>
+  </body>
 </html>
