@@ -5,12 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Result page</title>
-    <link rel="stylesheet" href="style.css" />
-    <script src="./script.js" defer></script>
-    <script src="./final-result.js" defer></script>
+    <link rel="stylesheet" href="final-style.css" />
+    <script src="./results.js" defer></script>
   </head>
   <body>
-    <div id="try"></div>
     <div id="results-container">
       <div id="nav-bar">
         <img
@@ -32,37 +30,36 @@
           <div id="summary">The summary of your answers:</div>
           <div id="circle">
             <div class="circular-progress">
-              <div class="progress-value">
-                <div id="congrats" class="upper-text-circle">
-                  Congratulations!
-                </div>
-                <div id="passed" class="upper-text-circle">
-                  You passed the exam.
-                </div>
+              <div class="progress-value-results">
+                <div id="congrats" class="upper-text-circle"></div>
+                <div id="passed" class="upper-text-circle"></div>
                 <div
                   id="certificate"
+                  class="text-inside-circle lower-text-circle color-opaque"
+                ></div>
+                <div
+                  id="checkEmail"
                   class="text-inside-circle lower-text-circle"
-                >
-                  We'll send you the certificate in few minutes.
-                </div>
-                <div class="text-inside-circle lower-text-circle">
-                  Check your email (including promotions / spam folder)
-                </div>
+                ></div>
               </div>
             </div>
           </div>
-          <div><button id="rate-us-button">RATE US</button></div>
+          <div>
+            <a href="review.html"
+              ><button id="rate-us-button">RATE US</button></a
+            >
+          </div>
         </div>
         <div class="right-column">
           <div class="align-center-vertically">
-            <div class="correct-wrong align-text-right">Wrong</div>
+            <div class="correct-wrong align-text-right color-opaque">Wrong</div>
             <div
               id="incorrectPercentage"
-              class="percentages align-text-right"
+              class="percentages align-text-right color-opaque"
             ></div>
             <div
               id="incorrectQuestions"
-              class="questions align-text-right"
+              class="questions align-text-right color-opaque"
             ></div>
           </div>
         </div>
