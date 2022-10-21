@@ -29,7 +29,7 @@ let questions = [
   {
     question:
       "What is the result of document.querySelectorAll('.test') when there aren't elements with class test in the DOM?",
-    correct: "[]",
+    correct: "[ ]",
     incorrects: ["null", "error", "undefined"],
     difficulty: "hard",
   },
@@ -43,13 +43,54 @@ let questions = [
     ],
     difficulty: "hard",
   },
+  {
+    question: "What does CPU stand for?",
+    correct: "Central Processing Unit",
+    incorrects: [
+      "Central Process Unit",
+      "Computer Personal Unit",
+      "Central Processor Unit",
+    ],
+    difficulty: "easy",
+  },
+  {
+    question: "The logo for Snapchat is a Bell.",
+    correct: "False",
+    incorrects: ["True"],
+    difficulty: "easy",
+  },
+  {
+    question: "On Twitter, what is the character limit for a Tweet?",
+    correct: "140",
+    incorrects: ["120", "160", "100"],
+    difficulty: "medium",
+  },
+  {
+    question:
+      "Which programming language shares its name with an island in Indonesia?",
+    correct: "Java",
+    incorrects: ["Python", "C", "Jakarta"],
+    difficulty: "easy",
+  },
+  {
+    question: "In web design, what does CSS stand for?",
+    correct: "Cascading Style Sheet",
+    incorrects: [
+      "Counter Strike: Source",
+      "Corrective Style Sheet",
+      "Computer Style Sheet",
+    ],
+    difficulty: "medium",
+  },
 ];
 
 let score = 0;
 let currentQuestion = 0;
 let totalQuestions = questions.length;
-const actualQuestion = document.querySelector("#total_question");
+const actualQuestion = document.querySelector("#white-number");
+const otherQuestion = document.querySelector("#pink-number");
 
+//a function that returns an array of randomised numbers from 0 to num - 1
 const randomiseNumbersUnique = function (num) {
   const allNumbers = [];
   for (let i = 0; i < num; i++) {
@@ -67,6 +108,7 @@ const randomiseNumbersUnique = function (num) {
   return result;
 };
 
+//a function that generates the HTML tags for the question and answers
 const createQuestions = function (obj) {
   if (!obj) {
     goToResultsPage();
@@ -81,7 +123,7 @@ const createQuestions = function (obj) {
 
   const randomIndexesArray = randomiseNumbersUnique(arrOfQuestions.length);
 
-  const question = document.createElement("h3");
+  const question = document.createElement("div");
   question.innerText = obj.question;
   question.classList.add("questiontext");
   parentNode.appendChild(question);
@@ -96,34 +138,21 @@ const createQuestions = function (obj) {
     parentNode.appendChild(label);
 
     const option = document.createElement("h4");
+    option.classList.add("question-font");
     option.innerText = arrOfQuestions[randomIndexesArray[i]];
     option.classList.add("answerbutton");
     input.setAttribute("value", `${option.innerText}`);
     label.appendChild(option);
   }
-
-  // let TIME_LIMIT = 30;
-  // let timePassed = 0;
-  // let timeLeft = TIME_LIMIT;
-
-  // console.log("timepassed", timePassed);
-  // console.log("timeleft", timeLeft);
-
-  // const remainingTime = document.querySelector("#timernumber");
-  // remainingTime.innerText = TIME_LIMIT;
-
-  // let timerInterval = null;
-
-  // startTimer();
 };
 
+//a function that goes to the results.html page
 const goToResultsPage = function () {
-  // let updatedScore = checkAnswer(questions[currentQuestion - 1]);
-  const nextButton = document.querySelector(".nextbutton");
   location.href = "./results.html";
   currentQuestion++;
 };
 
+//a function that returns the score
 const checkAnswer = function (obj) {
   const radioButtons = document.querySelectorAll('input[name="radioname"]');
   for (const radioButton of radioButtons) {
@@ -133,25 +162,84 @@ const checkAnswer = function (obj) {
       }
     }
   }
-  // console.log("current score:", score);
   return score;
 };
 
+const run = function () {
+  let difficulty = localStorage.getItem("difficulty");
+
+  let circularProgressNode = document.querySelector(".timer-progress");
+
+  if (difficulty === "easy") TIME_LIMIT = 30;
+  else if (difficulty === "medium") TIME_LIMIT = 60;
+  else if (difficulty === "hard") TIME_LIMIT = 90;
+
+  let timePassed = 0;
+  let timeLeft = TIME_LIMIT;
+
+  let progressStartValue = 0;
+  let progressEndValue = TIME_LIMIT;
+
+  const remainingTime = document.querySelector("#timernumber");
+  remainingTime.innerText = TIME_LIMIT;
+
+  let timerInterval = null;
+
+  function startTimer() {
+    const timerQuestion = currentQuestion;
+    const nextButton = document.querySelector(".nextbutton");
+    timerInterval = setInterval(() => {
+      //check if we're still on this question
+      if (currentQuestion != timerQuestion) {
+        clearInterval(timerInterval);
+        return;
+      }
+
+      // The amount of time passed increments by one
+      timePassed = timePassed += 1;
+      timeLeft = TIME_LIMIT - timePassed;
+
+      // The time left label is updated
+      remainingTime.innerText = timeLeft;
+
+      progressStartValue += 1;
+      circularProgressNode.style.background = `conic-gradient(#876192 ${
+        (progressStartValue * 360) / TIME_LIMIT
+      }deg, #00feff 0deg)`;
+
+      if (timeLeft === 0) {
+        clearInterval(timerInterval);
+        goToNextPage();
+      }
+    }, 1000);
+  }
+  startTimer();
+};
+
+//a function that goes to the next page
 const goToNextPage = function () {
   const parentNode = document.getElementsByClassName("bodycontent")[0];
   parentNode.innerHTML = "";
   currentQuestion++;
   createQuestions(questions[currentQuestion]);
 
-  actualQuestion.innerText = `QUESTION ${
-    currentQuestion + 1
-  }/${totalQuestions}`;
+  let difficulty = questions[currentQuestion].difficulty;
+  if (difficulty === "easy") TIME_LIMIT = 30;
+  else if (difficulty === "medium") TIME_LIMIT = 60;
+  else if (difficulty === "hard") TIME_LIMIT = 90;
+
+  actualQuestion.innerText = `QUESTION ${currentQuestion + 1} `;
+  otherQuestion.innerText = `/ ${totalQuestions}`;
 
   const nextButton = document.querySelector(".nextbutton");
 
   localStorage.setItem("currentScore", score);
 
   localStorage.setItem("current", currentQuestion);
+
+  localStorage.setItem("questions", questions.length);
+
+  localStorage.setItem("difficulty", difficulty);
 
   if (currentQuestion >= totalQuestions) {
     nextButton.addEventListener("click", goToResultsPage);
@@ -160,6 +248,7 @@ const goToNextPage = function () {
   run();
 };
 
+//a function that starts the quiz (creates the first page and activates the next button)
 const startQuiz = function () {
   score = 0;
   currentQuestion = 0;
@@ -167,16 +256,15 @@ const startQuiz = function () {
   createQuestions(questions[currentQuestion]);
   localStorage.setItem("current", currentQuestion);
 
-  // let difficulty = questions[currentQuestion].difficulty;
-  // if (difficulty === "easy") TIME_LIMIT = 30;
-  // else if (difficulty === "medium") TIME_LIMIT = 60;
-  // else if (difficulty === "hard") TIME_LIMIT = 90;
+  let difficulty = questions[currentQuestion].difficulty;
+  if (difficulty === "easy") TIME_LIMIT = 30;
+  else if (difficulty === "medium") TIME_LIMIT = 60;
+  else if (difficulty === "hard") TIME_LIMIT = 90;
 
-  // console.log("difficulty", difficulty);
+  localStorage.setItem("difficulty", difficulty);
 
-  actualQuestion.innerText = `QUESTION ${currentQuestion + 1}/${
-    questions.length
-  }`;
+  actualQuestion.innerText = `QUESTION ${currentQuestion + 1}`;
+  otherQuestion.innerText = ` / ${totalQuestions}`;
 
   if (currentQuestion >= totalQuestions - 1) {
     nextButton.addEventListener("click", goToResultsPage);
@@ -192,130 +280,9 @@ const startQuiz = function () {
   run();
 };
 
-// window.onload = function () {
-//   startQuiz();
-// };
-
-// function goFurther() {
-//   if (checkboxanswer.checked == true)
-//     Document.getElementById("proceedbtn").disabled = true;
-//   else Document.getElementById("proceedbtn").disabled = false;
-// }
-
-//you can select the stars and make them brighter
-const rating = function (grade) {
-  let starsMaindiv = document.getElementById("stars-div");
-  starsMaindiv.innerHTML = "";
-  for (let i = 0; i <= 10; i++) {
-    let spanStar = document.createElement("span");
-    let image = document.createElement("img");
-    image.setAttribute("src", "./assets/star.svg");
-    if (i <= grade) {
-      spanStar.classList.add("single-star2");
-    } else {
-      spanStar.classList.add("no-selected");
-    }
-
-    spanStar.addEventListener("click", () => rating(i));
-    starsMaindiv.appendChild(spanStar);
-    spanStar.appendChild(image);
-  }
-};
-
-//creates the stars
-const createStars = function () {
-  let starsMaindiv = document.getElementById("stars-div");
-  for (let i = 0; i <= 10; i++) {
-    let spanStar = document.createElement("span");
-    let image = document.createElement("img");
-    image.setAttribute("src", "./assets/star.svg");
-    image.classList.add("star-image");
-    spanStar.classList.add("single-star");
-    spanStar.addEventListener("click", () => rating(i));
-    starsMaindiv.appendChild(spanStar);
-    spanStar.appendChild(image);
-  }
-};
-
 window.onload = function () {
   startQuiz();
-
-  createStars();
 };
-
-const clearTextArea = function () {
-  let text = (document.getElementById("text-area").value = "");
-};
-
-let rateUsButton = document.getElementById("rate-us-button");
-
-const rateUs = function () {
-  rateUsButton = document.getElementById("rate-us-button");
-  location.href = "./review.html";
-};
-
-rateUsButton.addEventListener("click", rateUs);
-
-// let circularProgressNode = document.querySelector(".circular-progress");
-
-// const percentages = document.querySelector(".percentages");
-
-// let progressStartValue = 0;
-// let progressEndValue = 33.3;
-// let speed = 20;
-
-// let progress = setInterval(() => {
-//   progressStartValue += 1;
-//   circularProgressNode.style.background = `conic-gradient(#d20094 ${
-//     progressStartValue * 3.6
-//   }deg, #00feff 0deg)`;
-
-//   if (
-//     progressStartValue - progressEndValue >= 0 &&
-//     progressStartValue - progressEndValue < 1
-//   ) {
-//     while (progressStartValue < progressEndValue) {
-//       circularProgressNode.style.background = `conic-gradient(#d20094 ${
-//         (progressStartValue - progressEndValue) * 3.6
-//       }deg, #00feff 0deg)`;
-//     }
-
-//     clearInterval(progress);
-//   }
-
-//   // if (progressStartValue === progressEndValue) {
-//   //   clearInterval(progress);
-//   // }
-// }, speed);
-
-//for difficulty = easy : 30 sec
-//for difficulty = medium : 60 sec
-//for difficulty = easy : 90 sec
-
-// const TIME_LIMIT = 10;
-// let timePassed = 0;
-// let timeLeft = TIME_LIMIT;
-
-// const remainingTime = document.querySelector("#timernumber");
-// remainingTime.innerText = TIME_LIMIT;
-
-// let timerInterval = null;
-
-// function startTimer() {
-//   timerInterval = setInterval(() => {
-//     // The amount of time passed increments by one
-//     timePassed = timePassed += 1;
-//     timeLeft = TIME_LIMIT - timePassed;
-
-//     // The time left label is updated
-//     remainingTime.innerText = timeLeft;
-//     if (timeLeft === 0) {
-//       clearInterval(timerInterval);
-//     }
-//   }, 1000);
-// }
-
-// startTimer();
 
 //1. welcome page - call function click checkbox and proceed
 //2.
