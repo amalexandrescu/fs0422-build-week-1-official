@@ -4,9 +4,66 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./style.css" />
-    <script src="./script.js" defer></script>
-    <title>Document</title>
+    <title>Result page</title>
+    <link rel="stylesheet" href="final-style.css" />
+    <script src="./results.js" defer></script>
   </head>
-  <body></body>
+  <body>
+    <div id="results-container">
+      <div id="nav-bar">
+        <img
+          id="logo-image"
+          src="./assets/epicode_logo.png"
+          alt="epicode nav bar logo"
+        />
+      </div>
+      <div id="main-container">
+        <div class="left-column">
+          <div class="align-center-vertically">
+            <div class="correct-wrong">Correct</div>
+            <div id="correctPercentage" class="percentages"></div>
+            <div id="correctQuestions" class="questions"></div>
+          </div>
+        </div>
+        <div class="flex-columns-div middle-column">
+          <div id="results">Results</div>
+          <div id="summary">The summary of your answers:</div>
+          <div id="circle">
+            <div class="circular-progress">
+              <div class="progress-value-results">
+                <div id="congrats" class="upper-text-circle"></div>
+                <div id="passed" class="upper-text-circle"></div>
+                <div
+                  id="certificate"
+                  class="text-inside-circle lower-text-circle color-opaque"
+                ></div>
+                <div
+                  id="checkEmail"
+                  class="text-inside-circle lower-text-circle"
+                ></div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <a href="review.html"
+              ><button id="rate-us-button">RATE US</button></a
+            >
+          </div>
+        </div>
+        <div class="right-column">
+          <div class="align-center-vertically">
+            <div class="correct-wrong align-text-right color-opaque">Wrong</div>
+            <div
+              id="incorrectPercentage"
+              class="percentages align-text-right color-opaque"
+            ></div>
+            <div
+              id="incorrectQuestions"
+              class="questions align-text-right color-opaque"
+            ></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
